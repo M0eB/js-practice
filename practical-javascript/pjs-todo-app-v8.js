@@ -29,7 +29,8 @@ var todoList = {
     			console.log(completedLabel + ' ' + this.todos[i].todoText);
     		}
     	}
-    },
+    }
+    ,
     addTodo: function(todo) {
       this.todos.push({
         todoText: todo,
@@ -37,20 +38,24 @@ var todoList = {
       }
         );
       this.displayTodos();
-    },
+    }
+    ,
     changeTodo: function(position, todoText) {
       this.todos[position].todoText = todoText;
       this.displayTodos();
-    },
+    }
+    ,
     deleteTodo: function(position) {
       this.todos.splice(position, 1);
       this.displayTodos();
-    },
+    }
+    ,
     toggleCompleted: function(position) {
       var todo = this.todos[position];
       todo.completed = !todo.completed;
       this.displayTodos();
-    },
+    }
+    ,
     toggleAll: function() {
     	var totalTodos = this.todos.length;
     	var completedTodos = 0;
@@ -80,8 +85,31 @@ var todoList = {
 var handlers = {
     displayTodos: function() {
         todoList.displayTodos();
-    },
-    toggleAll: function() {
-        todoList.toggleAll();
+    }
+    ,
+    addTodo: function() {
+        var addTodoTextInput = document.getElementById('addTodoTextInput');
+        todoList.addTodo(addTodoTextInput.value);
+        addTodoTextInput.value = '';
+    }
+    ,
+    changeTodo: function() {
+        var changeTodoPositionInput = document.getElementById('changeTodoPosition');
+        var changeTodoTextInput     = document.getElementById('changeTodoText');
+        todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+        changeTodoPositionInput.value = '';
+        changeTodoTextInput.value = '';
+    }
+    ,
+    toggleTodo: function() {
+        var toggleTodoPositionInput = document.getElementById('toggleTodoPositionInput');
+        todoList.toggleCompleted(toggleTodoPositionInput.valueAsNumber);
+        toggleTodoPositionInput.value = '';
+    }
+    ,
+    deleteTodo: function() {
+        var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+        todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+        toggleTodoPositionInput.value = '';
     }
 }
