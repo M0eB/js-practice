@@ -77,13 +77,13 @@ var todoList = {
 };
 
 
-todoList.displayTodos();
-todoList.addTodo('item 1');
-todoList.addTodo('item 2');
-todoList.addTodo('item 3');
-todoList.addTodo('item 4');
-todoList.toggleCompleted(1);
-todoList.toggleCompleted(3);
-todoList.toggleAll();
-todoList.toggleAll();
-todoList.toggleAll();
+var btn_displayTodos = document.getElementById('btnDisplayTodos');
+var btn_toggleTodos  = document.getElementById('btnToggleTodos');
+
+btn_displayTodos.addEventListener('click', function() {
+    todoList.displayTodos();
+});
+
+btn_toggleTodos.addEventListener('click', function() {
+    todoList.toggleAll();
+})
